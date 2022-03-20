@@ -1,11 +1,13 @@
 ---
 # tasks file for ansible-role-libvirtd
 - name: Install packages
+  become: yes
   package:
     name:
       - "@virtualization"
 
 - name: Force systemd to reread config, enable and start service libvirtd
+  become: yes
   systemd:
     name: libvirtd
     state: restarted
